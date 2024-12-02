@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="loader">
+                <!-- Nút Start ban đầu ẩn -->
+                <button id="play" style="display:none;">🐰🐰</button>
+            </div>
+        </div>
+    </div>
+
+    <audio class="song" controls loop>
+        <source src="music.mp3">
+        Your browser isn't invited for super fun audio time.
+    </audio>
+
+    <canvas id="confetti"></canvas>
+
+    <div class="main">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-12 col-xl-6 mx-auto">
+                    <img src="img/banner.png" alt="">
+                </div>
+
+                <div class="col-12 text-center">
+                    <div id="name" class="area">Thanh Thủy</div>
+                </div>
+
+                <div class="col-12 text-center">
+                    <div class="type-wrap">
+                        <div id="typed-strings" class="typing">
+                            <h2>Chúc mừng sinh nhật <i id="nae">Thanh Thủy</i></h2>
+                            <h2>Chúc tuổi mới ngày càng yêu anh </h2>
+                            <h2>Anh yêu em ❤️</h2>
+                        </div>
+                        <span id="typed" style="white-space:pre;"></span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-xl-3 cake">
+                    <img src="img/cake.gif" alt="">
+                </div>
+            </div>
+        </div>
+        <img src="img/Balloon-Border.png" width="100%" class="balloon-border">
+    </div>
+
+    <div class="countdown">
+        <h2>Đang khóa</h2> 
+        <h2 id="countdown-timer">Loading...</h2>
+    </div>
+
+    <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        // Hàm tính toán thời gian đếm ngược và hiển thị nút Start khi đến đúng 0h ngày 03/12/2024
+        function startCountdown() {
+    const targetDate = new Date('2024-12-03T00:00:00'); // Ngày và giờ mục tiêu
+    const currentDate = new Date(); // Thời gian hiện tại
+
+    const timeDiff = targetDate - currentDate; // Tính toán thời gian còn lại
+
+    // Tính toán ngày, giờ, phút và giây
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    // Trả về giá trị đếm ngược
+    const countdownString = `${hours} : ${minutes} : ${seconds}`;
+    
+    // Cập nhật giao diện người dùng
+    document.getElementById("countdown-timer").innerHTML = countdownString;
+
+    // Nếu thời gian đếm ngược đã đến, hiển thị nút Start
+    if (timeDiff <= 0) {
+        document.getElementById("play").style.display = "block";
+        document.getElementById("countdown-timer").innerHTML = "It's Time!";
+    } else {
+        // Tiếp tục đếm ngược mỗi giây
+        setTimeout(startCountdown, 1000);
+    }
+
+    // Trả về giá trị đếm ngược
+    return countdownString;
+}
+
+// Gọi hàm khi trang web được tải
+window.onload = function () {
+    startCountdown();
+};
+
+        // Thêm sự kiện click để bắt đầu các hành động khác (như phát nhạc, hiển thị confetti)
+        document.getElementById("play").addEventListener("click", function () {
+            // Phát nhạc
+            document.querySelector("audio").play();
+
+            // Kích hoạt hiệu ứng confetti (sử dụng thư viện magic-snowflakes)
+            snowflakes.start();
+
+            // Bắt đầu hiệu ứng gõ chữ
+            var options = {
+                strings: ["Happy Birthday Gaurav", "Have a wonderful day", "Filled with joy and happiness."],
+                typeSpeed: 50,
+                backSpeed: 50,
+                backDelay: 1000,
+                loop: true
+            };
+            var typed = new Typed("#typed", options);
+        });
+    </script>
+</body>
+
+</html>
