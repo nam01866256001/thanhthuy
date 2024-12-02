@@ -105,7 +105,7 @@ body {
     padding: 10px 20px;
     background: #3498db;
     border-radius: 5px;
-    color: white;
+    color: red;
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
@@ -114,7 +114,7 @@ body {
 
 .countdown .time-block span {
     font-size: 1.5rem;
-    color: #ecf0f1;
+    color: red;
 }
 
 .balloon-border {
@@ -185,7 +185,7 @@ img {
 
 #countdown-timer {
     font-size: 25px;
-    color: #c2ced3;
+    color: #e63522;
 }
 
 /* Hiệu ứng bóng bay */
