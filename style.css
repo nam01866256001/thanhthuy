@@ -79,13 +79,7 @@ body {
     text-align: center;
     font-family: 'Arial', sans-serif;
     font-size: 2rem;
-    color: #f39c12;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    margin: 0 auto;
+  
 }
 
 .countdown h2 {
@@ -227,9 +221,9 @@ img {
 }
 
 .type-wrap {
-    font-size: 15px;
+    font-size: 18px;
     color: #C4515C;
-
+margin-top: 20px;
 }
 
 .cake {
